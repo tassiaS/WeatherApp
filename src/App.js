@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import Weather from "./components/Weather";
 
 
-var APIkey = "209af21293302d720b25fdc236104d2f";
+const APIkey = "209af21293302d720b25fdc236104d2f";
 
 class App extends React.Component {
 
@@ -23,6 +23,7 @@ class App extends React.Component {
       const city = e.target.elements.city.value;
       const country = e.target.elements.country.value;
       var getURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "," + country + "&APPID=" + APIkey;
+      
       const api_call = await fetch(getURL);
       const data = await api_call.json();
       
@@ -57,17 +58,18 @@ class App extends React.Component {
               <div className="row">
                 <div className="col-xs-5 title-container">
                   <Titles />
-                    </div>
-                      <div className="col-xs-7 form-container">
-                      <Form getWeather={this.getWeather} />
-                      <Weather 
-                        temperature={this.state.temperature} 
-                        humidity={this.state.humidity}
-                        city={this.state.city}
-                        country={this.state.country}
-                        description={this.state.description}
-                        error={this.state.error}
-                      />
+                </div>
+
+                <div className="col-xs-7 form-container">
+                  <Form getWeather={this.getWeather} />
+                  <Weather 
+                    temperature={this.state.temperature} 
+                    humidity={this.state.humidity}
+                    city={this.state.city}
+                    country={this.state.country}
+                    description={this.state.description}
+                    error={this.state.error}
+                    />
                 </div>
               </div>
             </div>
